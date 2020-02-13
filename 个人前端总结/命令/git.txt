@@ -1,0 +1,22 @@
+git clone http://baidu.com  克隆项目
+git status查看状态
+
+1.将项目推送到github上：
+git add .  添加
+git commit -m 'init'  提交 'init' 表示提交的信息
+git push 推送到github上
+
+2.创建分支并合并代码
+git branch home 创建主分支
+git checkout home 切换分支
+git push --set-upstream origin home 推送分支
+git add . 分支添加代码
+git commit -m 'init'  提交 'init' 表示提交的信息
+git push 推送到github上
+
+3.git branch 查看分支
+
+4.分支合并
+git checkout master 回到master分支
+git merge home 合并分支名字
+git push 再次推送代码

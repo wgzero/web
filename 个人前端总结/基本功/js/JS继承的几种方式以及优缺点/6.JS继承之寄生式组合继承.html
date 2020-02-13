@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        寄生组合式继承：
+        缺点是：会调用两次父构造函数
+     -->
+
+     <script>
+         function person(name){
+            this.name = name;
+            this.colors = ['blue', 'green', 'yellow'];
+         }
+         person.prototype.getName = function(){
+             console.log(this.name);
+         }
+
+         function child(name, age){
+            person.call(this, name)
+            this.age = age;
+         }
+
+        //  一次
+         child.prototype = new person();
+        //  第二次
+         var c1 = new child('zhangsan', 20)
+         console.log(c1);
+     </script>
+</body>
+</html>

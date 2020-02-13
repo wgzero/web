@@ -1,0 +1,1 @@
+show databases; 展示数据库

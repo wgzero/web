@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+            题目：怎么样将a,b,c 变成d的数据结构
+        */ 
+        var a = [{ id: 1, name: '李博士' }, { id: 2, name: '陈博士' }, { id: 3, name: '林博士' }];
+        var b = [{ kfId: 1, wechatNumber: 'LXX1589503023' }];
+        var c = [{ wechatNumber: 'LXX1589503023', name: '里寻寻' }];
+        var d = [{
+            value: 1,
+            label: '李博士',
+            children: [{
+                value: 'LXX1589503023',
+                label: '里寻寻'
+            }],
+        }, {
+            value: 2,
+            label: '陈博士',
+            children: []
+        }, {
+            value: 3,
+            label: '林博士',
+            children: []
+        }];
+
+        // 先考虑如何去实现
+
+        let arr = [];
+        let obj = {};
+
+        a.map(item => {
+            obj = item;
+            // console.log('item', item)
+            obj.value = item.id;
+            obj.label = item.name;
+            obj.childred = [];
+            // B.如果a的id等于b的id，就把b的id变成子集，wechat变成value
+
+
+            b.map(itemB => {
+                if (item.id == itemB.kfId) {
+                    obj.childred.value = itemB.wechatNumber;
+                    c.map(itemc => {
+                        if (itemB.wechatNumber == itemc.wechatNumber) {
+                            obj.childred.label = itemc.name;
+                            // console.log('boj', obj)
+                        }
+                    })
+                }
+            })
+
+
+
+            // C.如果b的wechat等于c的wechat就把name变成value
+
+            delete obj.id
+            delete obj.name
+            arr.push(obj)
+        })
+
+        console.log('arr', arr);
+
+
+    </script>
+</body>
+
+</html>

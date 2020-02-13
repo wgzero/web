@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        原生式继承：
+        优点：
+        1.
+        缺点：
+        1.包含引用类型的属性值始终都会共享相应的值，跟原型链继承一样的
+     -->
+
+    <script>
+         function createObj(o){
+            function F(){}
+            F.prototype = o;
+            return new F();
+         }
+
+         var person = {
+             name: 'zhangsan',
+             friends: ['tom', 'jack']
+         }
+
+         var p1 = createObj(person);
+         var p2 = createObj(person);
+
+         p1.name = 'summer';
+         console.log(p2.name);
+
+         p1.friends.push('linli');
+         console.log(p2.friends);
+     </script>
+
+    <!-- <script>
+        function createObj(o) {
+            function F() { }
+            F.prototype = o;
+            return new F();
+        }
+
+        var person = {
+            name: 'kevin',
+            friends: ['daisy', 'kelly']
+        }
+
+        var person1 = createObj(person);
+        var person2 = createObj(person);
+
+        person1.name = 'person1';
+        console.log(person2.name); // kevin
+
+        person1.friends.push('taylor');
+        console.log(person2.friends); // ["daisy", "kelly", "taylor"]
+    </script> -->
+
+</body>
+
+</html>

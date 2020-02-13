@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        构造函数继承的弊端：
+        1.引用类型的属性被所有实例共享
+        2.在创建Child实例时，不能向Person传参
+     -->
+    <script>
+        function person(){
+            this.name='summer';
+        }
+
+        person.prototype.getName = function(){
+            console.log(this.name)
+        }
+
+        function child(){
+
+        }
+
+        var child = new person();
+        child.getName();
+        // console.log(child.getName())
+
+    </script>
+
+    <script>
+        // 1.引用类型的属性被所有实例共享
+
+        // 父
+        function person1(){
+            this.name=['one', 'two'];
+        }
+
+        // 子
+        function child1(){
+
+        }
+        // 子继承父
+        child1.prototype = new person1();
+        // 子实例化对象
+        var childRes1 = new child1();
+        childRes1.name.push('hello world');
+        console.log('childRes1',childRes1.name);
+
+        var childRes2 = new child1();
+        console.log('childRes2',childRes2.name);
+    </script>
+</body>
+</html>

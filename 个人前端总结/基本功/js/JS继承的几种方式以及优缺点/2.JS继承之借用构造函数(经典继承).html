@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        借用构造函数继承优缺点：
+        优点：
+        1.避免了引用类型的属性被所有实例共享
+        2.可以在child中向person传参
+        缺点：
+        1.方法都在构造函数中定义，每次创建实例都会创建一遍方法
+     -->
+    <script>
+        // 1.
+        function person(){
+            this.name = ['one', 'two'];
+        }
+
+        function child(){
+            person.call(this)
+        }
+
+        var ch1 = new child();
+        ch1.name.push('summer');
+        console.log(ch1.name);
+        var ch2 = new child();
+        console.log(ch2.name);
+    </script>
+
+    <script>
+        // 2.可以在child中向person传参
+        function person1(name){
+            this.name = name;
+        }
+
+        function child1(name){
+            person1.call(this, name);
+        }
+
+        var c1 = new child1('one');
+        console.log(c1.name);
+
+        var c2 = new child1('two');
+        console.log(c2.name);
+
+    </script>
+</body>
+</html>

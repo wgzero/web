@@ -1,0 +1,4 @@
+1.创建一个github账号
+2.创建一个和你github名字一样的仓库如： https://wgzero.github.io/
+3.只能存放静态页面如： index.html
+4.https://wgzero.github.io/ 可以访问了
