@@ -1,0 +1,14 @@
+数组方法：
+A.map:map方法可以分别处理数组中的成员，返回一个新数组，也可以用于遍历数组
+B.includes:includes方法返回一个布尔值，表示某个数组是否包含给定的值
+C.filter:和map类似，filter方法接收一个函数。但是和map不同的是， filter把传入的函数依次作用于每个元素，
+然后根据返回值是 true 还是false决定保留还是丢弃该元素
+D.find:该方法主要应用于查找第一个符合条件的数组元素。它的参数是一个回调函数。在回调函数中可以写你要查找元素的条件，
+当条件成立为true时，返回该元素。如果没有符合条件的元素，返回值为undefined
+E.findIndex:findIndex()与find()的使用方法相同，只是当条件为true时findIndex()返回的是索引值，而find()返回的是元素。
+如果没有符合条件元素时findIndex()返回的是-1，而find()返回的是undefined
+
+对象：
+A.Object.keys:
+B.Object.values:
+C.Object.assign:
