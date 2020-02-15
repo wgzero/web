@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        普通函数与箭头函数有什么区别：
+        A.箭头函数是匿名函数，不能使用构造函数，不能new
+        B.箭头函数不能使用arguments，只能使用rest(...)
+        C.箭头函数没有原型属性
+        D.箭头函数不能使用generator当做函数，不能使用yield
+        E.箭头函数中的this是上下文，当前this指的就是这个值
+        F.箭头函数当方法使用时，没有定义this的绑定
+        G.使用call和apply调用时，传入参数时，参数一的改变对this没有影响
+     -->
+    <script>
+        var sex = 'world'
+        var obj = {
+            sex: '男',
+            say: function(){
+                console.log(this.sex)
+            },
+            show: () => {
+                console.log(this.sex)
+            }
+        }    
+        obj.say(); // 男
+        obj.show(); // world
+    </script>
+</body>
+</html>

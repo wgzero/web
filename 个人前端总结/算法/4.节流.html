@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    html,body{
+        height: 500%;
+    }
+</style>
+<body>
+    <!-- 总结: 一段时间内去触发一次 -->
+    <script>
+        function throttle(fn, delay){
+            let startTime = 0;
+            return function(){
+                let endTime = Date.now();
+                if(endTime - startTime > delay){
+                    fn.call(this)
+                    startTime = endTime
+                }
+            }
+        }
+
+        document.onscroll = throttle(function(){
+            console.log('scroll事件触发了' + Date.now());
+        }, 5000)
+    </script>
+</body>
+</html>

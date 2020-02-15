@@ -91,23 +91,89 @@ let pro = new Proxy(target, handler);
 console.log(pro.name) //  success
 ```
 
-
-
 ### 5.模板字符串
 
-
+```js
+let a = 'world'; 
+let b = 'hello ' + `${a}`;
+console.log(b); // hello world
+```
 
 ### 6.ES6模块
 
+A.export default
 
+```html
+在一个文件或模块中，export、import 可以有多个，export default 仅有一个。
+export default 中的 default 是对应的导出接口变量。
+通过 export 方式导出，在导入时要加{ }，export default 则不需要。
+export default 向外暴露的成员，可以使用任意变量来接收。
+```
 
 ### 7.Promise对象
 
+A.Promise 异步操作有三种状态：pending（进行中）、fulfilled（已成功）和 rejected（已失败）。除了异步操作的结果，任何其他操作都无法改变这个状态。
 
+B.Promise一旦创建，便无法取消
+
+C.eg：
+
+```js
+let p1 = new Promise(function(resolve, reject){
+    resolve('p1')
+});
+let p2 = new Promise(function(resolve, reject){
+    resolve('p2')
+});
+p1.then((res) => {
+    console.log(res)
+});
+p2.then((res) => {
+    console.log(res)
+});  // p1 p2
+```
+
+D.async + await 是promise的语法糖
 
 ### 8.Generator函数
+
+A.generator组成：
+
+- function后面有*
+- 函数内部有yield表达式
+
+B.
+
+```js
+function* func(){
+    console.log('one');
+    yield '1';
+    console.log('two');
+    yield '2';
+    console.log('three');
+    return '3';
+}
+let a = func(); 
+a.next(); // one
+a.next(); // two
+a.next(); // three
+```
 
 
 
 ### 9.async函数
+
+A.async是异步操作有关的关键字
+
+```js
+function show(){
+    console.log('show')
+}
+async function ResShow(){
+    console.log('a');
+    await show();
+    console.log('b');
+}
+ResShow(); // a show b
+```
 
