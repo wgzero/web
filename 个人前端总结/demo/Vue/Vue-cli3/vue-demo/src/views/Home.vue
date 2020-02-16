@@ -8,6 +8,8 @@
     <button @click="handleMixin">点击</button>
     <!-- <h1 @click="windZero">插件</h1> -->
     <h2>{{ itemList | getNumber }}</h2>
+    <button @click="changeHandle">change</button>
+    <div>{{ message }}</div>
   </div>
 </template>
 
@@ -25,11 +27,24 @@ export default {
   },
   data() {
     return {
-      itemList: [1,2,3,4,5,6]
+      itemList: [1,2,3,4,5,6],
+      message: 'hello world'
     }
   },
   mounted () {
     console.log('mounted')
+  },
+  updated () {
+    console.log('update');
+    this.succe()
+  },
+  methods: {
+    changeHandle() {
+      this.message = 'summer'
+    },
+    succe(){
+      console.log('change update')
+    }
   },
 }
 </script>
