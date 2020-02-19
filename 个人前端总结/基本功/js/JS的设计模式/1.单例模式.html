@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        单例模式：
+        A.定义
+            保证一个类仅有一个实例 并提供一个访问它的全局访问点
+        B.核心
+            确保只有一个实例 并提供全局访问
+        C.实现
+
+     -->
+    <script>
+        function SetManage(name){
+            this.manager = name;
+        }
+        SetManage.prototype.getName = function(){
+            console.log(this.manager)
+        }
+
+        var SingleSetManager = (function(){
+            var manager = null;
+            return function(name){
+                if(!manager){
+                    manager = new SetManage(name)
+                }
+                return  manager;
+            }
+        })();
+
+        SingleSetManager('a').getName();  // a
+        SingleSetManager('b').getName();  // a
+        SingleSetManager('c').getName();  // a
+
+    </script>
+</body>
+</html>

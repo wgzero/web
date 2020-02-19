@@ -99,9 +99,9 @@ module.exports = upload;
 ```js
 //全局安装
 npm install -g koa-generator
-// 安装项目
-koa my-project
-//切换目录到my-project
+// 安装项目 koa的html模板是jade  koa2的html模板是pug
+koa2 my-project 
+//切换目录到my-project  
 cd my-project
 //安装依赖
 npm install
@@ -302,3 +302,23 @@ app.use(async (ctx, next) => {
   ```
 
   ##### 5.
+
+
+
+
+
+
+
+## B.koa2项目文件创建
+
+#### 1.文件结构
+
+- config配置文件
+
+- module与数据库交互
+
+- controllers从数据库中获取数据
+
+- schema数据库设置
+
+#### 2.
