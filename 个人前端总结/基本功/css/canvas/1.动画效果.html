@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    html,body{
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+        background: #0f1922;
+    }
+    canvas{
+        margin: auto;
+    }
+</style>
+</head>
+<!-- 
+    canvas步骤：
+    绘制->清空->绘制->清空->绘制
+
+    步骤：
+    A.先设置圆
+    B.获取到画布，以及设置画布
+    C.设置画布的宽高，形状，颜色，字体，粗宽
+    D.线性渐变，在设置线性渐变的点
+    E.设置绘画方法
+        行动的位置处理
+            绘画->清除->绘画->清除
+    G.调用动画效果
+        开始调用
+
+
+    步骤：
+    A.先设置圆
+    B.获取到画布，以及设置画布
+    C.设置画布的宽高，形状，颜色，字体，粗宽
+    D.线性渐变，在设置线性渐变的点
+    E.设置绘画方法
+        行动的位置处理
+            绘画->清除->绘画->清除
+    G.调用动画效果
+        开始调用
+ -->
+<body>
+    <canvas id="canvas"></canvas>
+
+    <script>
+        let [pi, rate] = [Math.PI * 2 / 100, -25]
+        const canvas = document.getElementById('canvas')
+        const context = canvas.getContext('2d')
+
+        canvas.width = 500
+        canvas.height = 500
+        context.lineWidth = 12
+        context.lineCap = 'round'
+        context.fillStyle = 'white'
+        context.font = '80px Lato'
+
+        context.shadowColor = '#10fae7'
+
+        let gradient = context.createLinearGradient(220, 20, 220, 400)
+
+        gradient.addColorStop(0, "#11ffe4")
+        gradient.addColorStop(0.5, "#03c6fd")
+        gradient.addColorStop(1, "#10a5ff")
+
+        function draw(){
+            context.clearRect(0, 0, 500, 500)
+            context.shadowBlur = 0
+            context.beginPath()
+
+            context.strokeStyle = '#15222d'
+            context.arc(220, 220, 150, 0, Math.PI * 2, true)
+            context.stroke()
+
+            context.beginPath()
+            if(rate === 75) context.fillText(rate + 25 + '%', 120, 250)
+            else context.fillText(rate + 25 + '%', 160, 250)
+            context.stroke()
+
+            context.beginPath()
+            context.strokeStyle = gradient
+            context.shadowBlur = 12
+            context.arc(220, 220, 150, pi * -25, pi  * rate)
+            context.stroke()
+        }
+
+        // 动画部分
+        function animate(){
+            if(rate < 75) {
+                rate++
+                draw()
+                window.requestAnimationFrame(animate)
+            }
+        }
+
+        animate()
+
+    </script>
+</body>
+
+</html>

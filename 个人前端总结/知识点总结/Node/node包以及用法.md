@@ -322,3 +322,53 @@ app.use(async (ctx, next) => {
 - schema数据库设置
 
 #### 2.
+
+
+
+
+
+
+
+
+
+
+
+## C.Koa2的坑点
+
+### 1.koa2中的koa-bodyparser的post请求ctx.request.body为空
+
+解决办法： 替换成koa-body包
+
+```js
+const koaBody = require('koa-body')
+
+app.use(koaBody({
+  multipart:true, // 支持文件上传
+  encoding:'gzip',
+  formidable:{
+    uploadDir:path.join(__dirname,'public/upload/'), // 设置文件上传目录
+    keepExtensions: true,    // 保持文件的后缀
+    maxFieldsSize:2 * 1024 * 1024, // 文件上传大小
+    onFileBegin:(name,file) => { // 文件上传前的设置
+      // console.log(`name: ${name}`);
+      // console.log(file);
+    },
+  }
+}));
+```
+
+```
+//获取参数
+ctx.request.body
+ctx.request.files
+```
+
+### 2.koa-static的静态资源存放
+
+```js
+// 要注意资源放置的目录，路径如果是/public/images，去掉public路径就行了
+// 直接访问http://localhost:3000/images/xxx.png路径即可 
+app.use(require('koa-static')(__dirname + '/public'))
+```
+
+### 3.
